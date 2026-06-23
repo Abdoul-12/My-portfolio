@@ -50,6 +50,17 @@ a {
   text-decoration: none;
 }
 
+img {
+  max-width: 100%;
+}
+
+.hero-text,
+.about-text,
+.project-card > div,
+.contact > div {
+  min-width: 0;
+}
+
 .sidebar {
   position: fixed;
   top: 18px;
@@ -740,16 +751,40 @@ a {
 
 @media (max-width: 1160px) {
   .page {
-    width: calc(100% - 190px);
+    width: calc(100% - 222px);
     padding-right: 14px;
   }
 
   .hero {
-    grid-template-columns: minmax(0, 1fr) 330px;
+    grid-template-columns: minmax(0, 1fr) minmax(290px, 330px);
+    gap: 28px;
   }
 
   .skills {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1060px) {
+  .projects {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .timeline {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 32px;
+  }
+
+  .timeline::before {
+    display: none;
+  }
+
+  .contact {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-box {
+    width: 100%;
   }
 }
 
@@ -792,8 +827,8 @@ a {
   }
 
   .page {
-    width: auto;
-    max-width: 760px;
+    width: min(100%, 820px);
+    max-width: none;
     margin: auto;
     padding: 14px;
   }
@@ -806,6 +841,7 @@ a {
 
   .hero {
     min-height: auto;
+    gap: 30px;
   }
 
   .hero-photo {
@@ -824,6 +860,20 @@ a {
 
   .timeline::before {
     display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .skills {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about-grid {
+    gap: 30px;
   }
 }
 
@@ -872,7 +922,9 @@ a {
   }
 
   .hero-photo {
-    height: 390px;
+    width: min(100%, 380px);
+    height: auto;
+    aspect-ratio: 304 / 408;
   }
 
   .project-card {
@@ -881,6 +933,42 @@ a {
 
   .project-card img {
     width: 100%;
-    height: 170px;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 430px) {
+  .page {
+    padding: 10px;
+  }
+
+  .sidebar {
+    padding: 10px;
+  }
+
+  .menu {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .panel {
+    padding: 20px 14px;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+  }
+
+  .hero h2 {
+    font-size: 16px;
+  }
+
+  .section-title h2 {
+    font-size: 18px;
+  }
+
+  .info-list p,
+  .contact-cards p {
+    overflow-wrap: anywhere;
   }
 }
